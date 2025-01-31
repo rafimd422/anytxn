@@ -19,7 +19,17 @@ import LanguageIcon from "@mui/icons-material/Language";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowDropDownCircleOutlined from "@mui/icons-material/ArrowDropDownCircleOutlined";
 
-const NAV_ITEMS = [
+interface NavItem {
+  label: string;
+  href: string;
+  submenu?: { label: string; href: string }[];
+}
+
+interface NavbarProps {}
+
+const LANGUAGES = ["English", "Français", "বাংলা"];
+
+const NAV_ITEMS: NavItem[] = [
   {
     label: "Solutions",
     href: "#",
@@ -33,10 +43,8 @@ const NAV_ITEMS = [
   { label: "About Us", href: "/en/about-us" },
 ];
 
-const LANGUAGES = ["English", "Français", "বাংলা"];
-
-export const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+export const Navbar: React.FC<NavbarProps> = () => {
+  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const [solutionMenuAnchor, setSolutionMenuAnchor] = useState<null | HTMLElement>(null);
   const [languageMenuAnchor, setLanguageMenuAnchor] = useState<null | HTMLElement>(null);
 
@@ -173,10 +181,8 @@ export const Navbar = () => {
         component="nav"
         position="static"
         sx={{
-            background: {
-                xs: "rgb(31 128 240)", 
-                md: "transparent",
-              },          boxShadow: "none",
+          background: { xs: "rgb(31 128 240)", md: "transparent" },
+          boxShadow: "none",
           padding: "0 20px",
         }}
       >
@@ -228,7 +234,6 @@ export const Navbar = () => {
         </Toolbar>
       </AppBar>
 
-      {/* Mobile Drawer */}
       <Drawer
         variant="temporary"
         open={mobileOpen}
