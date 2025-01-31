@@ -1,6 +1,6 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { Navbar } from './components/Navbar';
 import { ReactNode } from 'react';
+import { Header } from './components/Header';
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -11,7 +11,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body>
         <AppRouterCacheProvider>
-          <Navbar />
+          <Header />
           {children}
         </AppRouterCacheProvider>
       </body>

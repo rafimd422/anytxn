@@ -68,39 +68,36 @@ export const Navbar: React.FC<NavbarProps> = () => {
   const drawer = (
     <Box
       sx={{
-        textAlign: "center",
+        textAlign: "left",
         width: "100vw",
         height: "40vh",
-        background: "#0052D4",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "flex-start",
         gap: 3,
         position: "relative",
+        padding: "20px",
       }}
     >
-      {/* Close Button */}
       <IconButton
         onClick={handleDrawerToggle}
         sx={{ position: "absolute", top: 10, right: 10, color: "#fff" }}
       >
         <CloseIcon />
       </IconButton>
-
-      {/* Logo */}
-      <Typography variant="h6" sx={{ color: "#fff", fontWeight: "bold" }}>
-        AYTECH
+  
+      <Typography >
+        
       </Typography>
-
-      {/* Navigation Items */}
+  
       {NAV_ITEMS.map(({ label, href, submenu }) =>
         submenu ? (
-          <Box key={label}>
+          <Box key={label} sx={{ width: "100%" }}>
             <Button
               onClick={handleMenuOpen(setSolutionMenuAnchor)}
               endIcon={<ArrowDropDownCircleOutlined />}
-              sx={{ color: "white", textTransform: "none" }}
+              sx={{ color: "white", textTransform: "none", justifyContent: "flex-start", width: "100%" }}
             >
               {label}
             </Button>
@@ -108,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
               anchorEl={solutionMenuAnchor}
               open={isSolutionMenuOpen}
               onClose={handleMenuClose(setSolutionMenuAnchor)}
-              PaperProps={{ sx: { width: 200, bgcolor: "white", boxShadow: 3, borderRadius: 1 } }}
+              sx={{ width: 200, bgcolor: "white", boxShadow: 3, borderRadius: 1, marginLeft: "20px" }}
             >
               {submenu.map(({ label, href }) => (
                 <MenuItem key={label} component="a" href={href} onClick={handleMenuClose(setSolutionMenuAnchor)}>
@@ -118,13 +115,17 @@ export const Navbar: React.FC<NavbarProps> = () => {
             </Menu>
           </Box>
         ) : (
-          <Button key={label} component="a" href={href} sx={{ color: "white", textTransform: "none" }}>
+          <Button
+            key={label}
+            component="a"
+            href={href}
+            sx={{ color: "white", textTransform: "none", justifyContent: "flex-start", width: "100%" }}
+          >
             {label}
           </Button>
         )
       )}
-
-      {/* Language Selector */}
+  
       <Button
         startIcon={<LanguageIcon />}
         onClick={handleMenuOpen(setLanguageMenuAnchor)}
@@ -134,23 +135,19 @@ export const Navbar: React.FC<NavbarProps> = () => {
           color: "#fff",
           textTransform: "none",
           padding: "8px 16px",
+          mx:'auto'
         }}
       >
         ENGLISH
       </Button>
-      <Menu
-        anchorEl={languageMenuAnchor}
-        open={isLanguageMenuOpen}
-        onClose={handleMenuClose(setLanguageMenuAnchor)}
-      >
+      <Menu anchorEl={languageMenuAnchor} open={isLanguageMenuOpen} onClose={handleMenuClose(setLanguageMenuAnchor)}>
         {LANGUAGES.map((lang) => (
           <MenuItem key={lang} onClick={handleMenuClose(setLanguageMenuAnchor)}>
             {lang}
           </MenuItem>
         ))}
       </Menu>
-
-      {/* Contact Button */}
+  
       <Button
         variant="outlined"
         sx={{
@@ -163,7 +160,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
           padding: "10px 20px",
           fontSize: "1.1rem",
           width: "100%",
-          backgroundColor: "transparent",
+          justifyContent: "flex-start",
           "&:hover": {
             boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
           },
@@ -173,6 +170,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
       </Button>
     </Box>
   );
+  
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -181,7 +179,7 @@ export const Navbar: React.FC<NavbarProps> = () => {
         component="nav"
         position="static"
         sx={{
-          background: { xs: "rgb(31 128 240)", md: "transparent" },
+
           boxShadow: "none",
           padding: "0 20px",
         }}
@@ -227,7 +225,6 @@ export const Navbar: React.FC<NavbarProps> = () => {
             )}
           </Box>
 
-          {/* Mobile Menu Icon */}
           <IconButton color="inherit" edge="end" onClick={handleDrawerToggle} sx={{ display: { md: "none" } }}>
             <MenuIcon />
           </IconButton>
