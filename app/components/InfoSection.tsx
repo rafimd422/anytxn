@@ -41,12 +41,7 @@ mb: 3
             specifically designed for retail financial services.
           </Typography>
 
-          <Typography sx={{
-            fontSize: { xs: '1rem', md: '1.1rem' },
-            lineHeight: 1.7,
-            color: "text.secondary",
-            fontWeight: 400
-          }}>
+          <Typography fontSize={'small'}>
             Our modern approach surpasses traditional banking and card processing
             systems, empowering you with the most advanced technology for lasting
             success.
