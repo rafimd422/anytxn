@@ -193,7 +193,7 @@ export const Navbar: React.FC = () => {
         fontWeight: "600",
         border: "1px solid",
         borderColor: lastScrollY > 0 ? "rgb(254 139 83)" : "white",
-        background: lastScrollY > 0 && 'rgb(254 139 83)',
+        background: lastScrollY > 0 ? 'rgb(254 139 83)' : "none",
         borderRadius: "4px",
         color: "#fff",
         boxShadow: "0px 2px 4px rgba(255, 255, 255, 0.27)",
