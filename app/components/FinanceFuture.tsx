@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Card, CardContent, Container, Tab, Tabs, Typography, useMediaQuery } from "@mui/material";
+import { Box, Card, CardContent, Container, Tab, Tabs, Typography, useMediaQuery } from "@mui/material";
 import { Title } from "./Title";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -23,24 +23,29 @@ export const FinanceFuture = () => {
             title: "Purpose-built financial services",
             description:
                 "Elevate customer experience and achieve agile financial product innovation with the world’s first, consumer-centric, real-time transaction account processing and credit limit system.",
+            description2:
+                "Experience the advantages of integrated retail financial services technology, real-time analysis of transactional behaviour and product marketing opportunities.",
             image: img1,
         },
         {
             title0: "Agile and adaptable",
             title: "Agile and adaptable for growth",
-            description: "Enhance financial agility with real-time adaptability and seamless integration.",
+            description: "Innovate with evolving customer demands through our open platform-based technology architecture. Stay ahead of the ever-changing financial landscape with a strong focus on security, compliance and performance.",
+            description2: "Optimise your offerings to unlock new revenue streams and deliver an extraordinary customer experience, with digitally designed core banking, payment processing and lending capabilities.",
             image: img2,
         },
         {
             title0: "Compliance ready",
             title: "Manage compliance with ease",
-            description: "Ensure regulatory compliance with built-in financial governance frameworks.",
+            description: "Navigate through the evolving regulatory landscape with confidence by streamlining compliance management—through real-time risk monitoring solutions powered by AI and machine learning.",
+            description2: "Transform your compliance strategy with flexible and diversified policy rules, powered by cutting-edge technology that is designed for seamless integration with core banking and card payment systems.",
             image: img3,
         },
         {
             title0: "Secure and safe",
             title: "Highly secure and safe",
-            description: "Experience top-tier security measures for financial transactions and data protection.",
+            description: "Discover unparalleled security trusted by financial institutions across the globe. Our applications are meticulously developed in compliance with international security standards, drawing on 20 years of technical expertise.",
+            description2: "Join over 40 esteemed Fls, each serving more than 200 million customers, and benefit from our secure, robust and reliable infrastructure..",
             image: img4,
         },
     ];
@@ -87,19 +92,26 @@ export const FinanceFuture = () => {
                             }}
                         >
                             <CardContent sx={{ flex: 2 }}>
-                                <Typography sx={{fontWeight: 700,
-          letterSpacing: 2,textTransform:'uppercase',
-          fontSize: { xs: "0.75rem", md: "0.85rem" },
-          textAlign: "start"}} color="primary">
+                                <Typography sx={{
+                                    fontWeight: 700,
+                                    letterSpacing: 2, textTransform: 'uppercase',
+                                    fontSize: { xs: "0.75rem", md: "0.85rem" },
+                                    textAlign: "start"
+                                }} color="primary">
                                     {slide.title0}
                                 </Typography>
-                                <Typography sx={{fontWeight: 700,
-          letterSpacing: 2,
-          fontSize: "34px",
-          textAlign: "start"}} fontWeight="bold" gutterBottom>
+                                <Typography sx={{
+                                    fontWeight: 700,
+                                    letterSpacing: 2,
+                                    fontSize: "34px",
+                                    textAlign: "start"
+                                }} fontWeight="bold" gutterBottom>
                                     {slide.title}
                                 </Typography>
-                                {isDesktop && <Typography>{slide.description}</Typography>}
+                                {isDesktop && <>
+                                    <Typography textAlign={'justify'} fontSize={'14px'} fontWeight={'bold'} marginY={'6px'}>{slide.description}</Typography>
+                                    <Typography textAlign={'justify'} fontSize={'14px'} marginTop={'6px'}>{slide.description2}</Typography>
+                                </>}
                             </CardContent>
                             <Image
                                 src={slide.image}
@@ -113,7 +125,12 @@ export const FinanceFuture = () => {
                                     marginLeft: "12px",
                                 }}
                             />
-                            {!isDesktop && <Typography textAlign={'center'} fontSize={'14px'} marginTop={'6px'}>{slide.description}</Typography>}
+                            {!isDesktop &&
+                                <>
+                                    <Typography textAlign={'justify'} fontSize={'14px'} fontWeight={'bold'} marginY={'6px'}>{slide.description}</Typography>
+                                    <Typography textAlign={'justify'} fontSize={'14px'} marginTop={'6px'}>{slide.description2}</Typography>
+                                </>
+                            }
                         </Card>
                     </SwiperSlide>
                 ))}
