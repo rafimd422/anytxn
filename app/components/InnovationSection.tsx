@@ -2,13 +2,15 @@
 import { Box, Container, useMediaQuery } from "@mui/material";
 import { Title } from "./Title";
 import Image from "next/image";
-import graphImg from "@/public/Assets/graph.png";
-import graphImgPhn from "@/public/Assets/graphMobile.png";
 import { InnovationCard } from "./InnovationCard";
 import { FaProjectDiagram, FaLightbulb, FaMicrochip } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import graphImg from "@/public/Assets/graph.png";
+import graphImgPhn from "@/public/Assets/graphMobile.png";
 
 export const InnovationSection = () => {
-  const mdScreen = useMediaQuery("(max-width: 825px)");
+  const mdScreen = useMediaQuery("(max-width: 725px)");
 
   const cardData = [
     {
@@ -35,47 +37,61 @@ export const InnovationSection = () => {
   ];
 
   return (
-<Container
-  sx={{
-    width: "100%",
-    mt: 6,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: 4,
-  }}
->
+    <Container
+      sx={{
+        width: "100%",
+        mt: 6,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 4,
+      }}
+    >
       <Title title="OUR PHILOSOPHY" subTitle="Human-centred innovation" />
 
       <Image
-  src={mdScreen ? graphImgPhn : graphImg}
-  height={500}
-  width={920}
-  style={{
-    width: "100%",
-    maxWidth: "980px",
-    height: "auto",
-    objectFit: "contain",
-    marginBottom: "2rem",
-  }}
-  alt="Graph illustration"
-/>
+        src={mdScreen ? graphImgPhn : graphImg}
+        height={500}
+        width={920}
+        style={{
+          width: "100%",
+          maxWidth: "980px",
+          height: "auto",
+          objectFit: "contain",
+          marginBottom: "2rem",
+        }}
+        alt="Graph illustration"
+        unoptimized
+      />
 
-<Box
-  sx={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    px:'1.2rem', 
-    flexWrap: "wrap",
-    gap: 3,
-  }}
->
-        {cardData.map((card) => (
-          <InnovationCard key={card.id} {...card} />
-        ))}
-      </Box>
+      {mdScreen ? (
+        <Swiper
+        loop={true} 
+          style={{ width: "80%", paddingBottom: "2rem" }}
+        >
+          {cardData.map((card) => (
+            <SwiperSlide key={card.id}>
+              <InnovationCard {...card} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            px: "1.2rem",
+            flexWrap: "wrap",
+            gap: 3,
+          }}
+        >
+          {cardData.map((card) => (
+            <InnovationCard key={card.id} {...card} />
+          ))}
+        </Box>
+      )}
     </Container>
   );
 };
