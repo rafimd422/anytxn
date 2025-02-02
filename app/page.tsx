@@ -1,12 +1,13 @@
 import { FC } from "react";
-import Image from "next/image";
 import { Box } from "@mui/material";
 import { InfoSection } from "./components/InfoSection";
+import { InnovationSection } from "./components/InnovationSection";
 
 const Home: FC = () => {
   return (
     <Box>
       <InfoSection/>
+      <InnovationSection/>
     </Box>
   );
 }
